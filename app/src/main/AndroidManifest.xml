@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
 
+        <!--Add activities here-->
         <activity android:name=".HomeActivity"
             android:parentActivityName=".MainActivity" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
