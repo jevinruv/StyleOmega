@@ -1,4 +1,4 @@
-package com.example.jevin.styleomega;
+package com.example.jevin.styleomega.Activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -8,6 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.example.jevin.styleomega.R;
 
 public class HomeActivity extends AppCompatActivity {
 

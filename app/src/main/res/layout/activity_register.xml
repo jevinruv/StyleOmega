@@ -7,7 +7,7 @@
 
     android:background="@color/white"
 
-    tools:context="com.example.jevin.styleomega.RegisterActivity"
+    tools:context="com.example.jevin.styleomega.Activities.RegisterActivity"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
@@ -22,6 +22,7 @@
         android:layout_marginStart="15dp"
         android:layout_weight="1"
         android:backgroundTint="@color/btnColor"
+        android:onClick="BtnRegisterClicked"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -32,7 +33,7 @@
         tools:layout_constraintRight_creator="1" />
 
     <EditText
-        android:id="@+id/txtNIC"
+        android:id="@+id/inputNIC"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="30dp"
@@ -51,25 +52,26 @@
 
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/inputEmail"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginTop="12dp"
         android:width="280dp"
         android:background="@color/inputText"
         android:drawableRight="@drawable/name"
         android:ems="10"
-        android:hint="@string/name"
+        android:hint="@string/email"
         android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/txtNIC"
-        android:layout_marginTop="17dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtNIC"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/inputNIC"
+        app:layout_constraintRight_toRightOf="@+id/inputNIC"
+        app:layout_constraintTop_toBottomOf="@+id/inputNIC"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtNIC" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
-        android:id="@+id/txtPassword"
+        android:id="@+id/inputPassword"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:width="280dp"
@@ -80,11 +82,12 @@
         android:inputType="textPassword"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/txtName"
-        android:layout_marginTop="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtName"
+        app:layout_constraintRight_toRightOf="@+id/inputEmail"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmail"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtName" />
+        app:layout_constraintLeft_toLeftOf="@+id/inputEmail"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -95,7 +98,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtPassword">
+        app:layout_constraintLeft_toLeftOf="@+id/inputPassword">
 
         <RadioButton
             android:id="@+id/radioBtnMale"

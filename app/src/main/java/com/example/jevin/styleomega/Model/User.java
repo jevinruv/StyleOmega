@@ -1,4 +1,4 @@
-package com.example.jevin.styleomega.Database;
+package com.example.jevin.styleomega.Model;
 
 /**
  * Created by Jevin on 20-Jul-17.
@@ -6,13 +6,15 @@ package com.example.jevin.styleomega.Database;
 
 public class User {
 
-    private int nic;
+    private String nic;
     private String name;
     private String password;
+    private String email;
 
-    public User(int nic, String name, String password) {
+
+    public User(String nic, String email, String password) {
         this.nic = nic;
-        this.name = name;
+        this.email = email;
         this.password = password;
     }
 
@@ -20,11 +22,17 @@ public class User {
 
     }
 
-    public int getNic() {
+    public String getEmail() {  return email;   }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNic() {
         return nic;
     }
 
-    public void setNic(int nic) {
+    public void setNic(String nic) {
         this.nic = nic;
     }
 

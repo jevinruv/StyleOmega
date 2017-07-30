@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jevin.styleomega.MainActivity"
+    tools:context="com.example.jevin.styleomega.Activities.MainActivity"
     android:background="#e5eaed"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
     <EditText
-        android:id="@+id/inputUsername"
+        android:id="@+id/inputEmail"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginBottom="15dp"
@@ -99,15 +99,18 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="69dp"
+        android:layout_height="66dp"
         app:srcCompat="@drawable/logo"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headingp1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_editor_absoluteY="113dp"
+        tools:layout_editor_absoluteX="158dp"
+        android:layout_marginTop="0dp" />
 
     <Button
         android:id="@+id/btnSignup"
