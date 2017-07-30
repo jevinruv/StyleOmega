@@ -15,7 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText email;
     EditText password;
 
-    UserDBHandler dbHandler;
+    UserDBHandler dbHandler;//sql
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
