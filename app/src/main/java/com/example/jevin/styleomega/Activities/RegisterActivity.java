@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.error_fields_empty), Toast.LENGTH_SHORT).show();
         }
         else{
-            if(dbHandler.viewUser(nic).getNic() == null) {
+            if(dbHandler.viewUser(nic).getNic() == null) { //returns a user object from viewUser
 
                 User newUser = new User(nic, name, password, email);
                 dbHandler.addUser(newUser);
