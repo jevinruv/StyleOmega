@@ -49,23 +49,27 @@ public class RegisterActivity extends AppCompatActivity {
         password = _password.getText().toString();
 
         if(nic.equals("") || name.equals("") || email.equals("") || password.equals("")){
-            Toast.makeText(getApplicationContext(), getString(R.string.error_fields_empty), Toast.LENGTH_SHORT).show();
-        }
+            displayToast(R.string.error_fields_empty);        }
         else{
             if(dbHandler.viewUser(nic).getNic() == null) { //returns a user object from viewUser
 
                 User newUser = new User(nic, name, password, email);
                 dbHandler.addUser(newUser);
-                Toast.makeText(getApplicationContext(), R.string.successfully_registered, Toast.LENGTH_SHORT).show();
 
+                displayToast(R.string.successfully_registered);
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }
             else{
-                Toast.makeText(getApplicationContext(), R.string.error_user_exists, Toast.LENGTH_SHORT).show();
+                displayToast(R.string.error_user_exists);
             }
 
         }
 
+    }
+
+
+    public void displayToast(int message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
