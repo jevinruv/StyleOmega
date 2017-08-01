@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:parentActivityName=".Activities.MainActivity"
-            android:name=".Activities.MainActivity">
+            android:parentActivityName=".Activities.LoginActivity"
+            android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,14 +21,14 @@
 
         <activity
             android:name=".Activities.HomeActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:parentActivityName=".Activities.LoginActivity"
             >
         </activity>
 
         <activity
             android:name=".Activities.RegisterActivity"
             android:label="Sign Up"
-            android:parentActivityName=".Activities.MainActivity"
+            android:parentActivityName=".Activities.LoginActivity"
             >
 
         </activity>

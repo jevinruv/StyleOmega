@@ -3,6 +3,7 @@ package com.example.jevin.styleomega.Database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -23,7 +24,7 @@ public class UserDBHandler extends SQLiteOpenHelper {
     //User Table - Column Names
     private static final String COLUMN_NIC = "nic";
     private static final String COLUMN_EMAIL = "email";
-//    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_NAME = "name";
     private static final String COLUMN_PASSWORD = "password";
 
     public UserDBHandler(Context context) {
@@ -37,6 +38,7 @@ public class UserDBHandler extends SQLiteOpenHelper {
 
         String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "(" +
                 COLUMN_NIC  + " TEXT PRIMARY KEY," +
+                COLUMN_NAME + " TEXT,"+
                 COLUMN_EMAIL + " TEXT,"+
                 COLUMN_PASSWORD + " TEXT" + ")";
 
@@ -46,7 +48,7 @@ public class UserDBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS" + TABLE_USERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         onCreate(db);
     }
 
@@ -55,6 +57,7 @@ public class UserDBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_NIC,user.getNic());
+        values.put(COLUMN_NAME,user.getName());
         values.put(COLUMN_EMAIL,user.getEmail());
         values.put(COLUMN_PASSWORD,user.getPassword());
 
@@ -71,16 +74,23 @@ public class UserDBHandler extends SQLiteOpenHelper {
     public User viewUser(String nic){
 
         SQLiteDatabase db = getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + TABLE_USERS + "WHERE" + COLUMN_NIC + "=\"" + nic  + "\";" ;
-        Cursor c = db.rawQuery(selectQuery,null);
+        //Cursor cursor=db.rawQuery("SELECT * FROM users WHERE email='"+email+"'", null);
 
-        if(c != null)
-            c.moveToFirst();
-
+        String selectQuery = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_NIC + "='"+nic+"' "  ;
         User user = new User();
-        user.setNic(c.getString(c.getColumnIndex("COLUMN_NIC")));
-        user.setName(c.getString(c.getColumnIndex("COLUMN_NAME")));
-        user.setPassword(c.getString(c.getColumnIndex("COLUMN_PASSWORD")));
+
+        try {
+            Cursor c = db.rawQuery(selectQuery, null);
+
+            if (c.moveToFirst()) {
+                user.setNic(c.getString(c.getColumnIndex(COLUMN_NIC)));
+                user.setName(c.getString(c.getColumnIndex(COLUMN_NAME)));
+                user.setEmail(c.getString(c.getColumnIndex(COLUMN_EMAIL)));
+                user.setPassword(c.getString(c.getColumnIndex(COLUMN_PASSWORD)));
+            }
+        }catch (SQLException er){
+
+        }
 
         return user;
     }
