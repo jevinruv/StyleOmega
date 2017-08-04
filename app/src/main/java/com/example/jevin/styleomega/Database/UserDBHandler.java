@@ -74,15 +74,16 @@ public class UserDBHandler extends SQLiteOpenHelper {
     public User viewUser(String nic){
 
         SQLiteDatabase db = getReadableDatabase();
+        User user = null;
         //Cursor cursor=db.rawQuery("SELECT * FROM users WHERE email='"+email+"'", null);
 
         String selectQuery = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_NIC + "='"+nic+"' "  ;
-        User user = new User();
 
         try {
             Cursor c = db.rawQuery(selectQuery, null);
 
             if (c.moveToFirst()) {
+                user = new User();
                 user.setNic(c.getString(c.getColumnIndex(COLUMN_NIC)));
                 user.setName(c.getString(c.getColumnIndex(COLUMN_NAME)));
                 user.setEmail(c.getString(c.getColumnIndex(COLUMN_EMAIL)));

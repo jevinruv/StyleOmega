@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         if(nic.equals("") || name.equals("") || email.equals("") || password.equals("")){
             displayToast(R.string.error_fields_empty);        }
         else{
-            if(dbHandler.viewUser(nic).getNic() == null) { //returns a user object from viewUser
+            if(dbHandler.viewUser(nic) == null) {
 
                 User newUser = new User(nic, name, password, email);
                 dbHandler.addUser(newUser);
