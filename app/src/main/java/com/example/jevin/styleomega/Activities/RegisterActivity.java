@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     String email;
     String password;
 
-    UserDBHandler dbHandler;
+    UserDBHandler userDBHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void BtnRegisterClicked(View view){
 
-        dbHandler = new UserDBHandler(this);
+        userDBHandler = new UserDBHandler(this);
 
         nic = _nic.getText().toString();
         name = _name.getText().toString();
@@ -51,10 +51,10 @@ public class RegisterActivity extends AppCompatActivity {
         if(nic.equals("") || name.equals("") || email.equals("") || password.equals("")){
             displayToast(R.string.error_fields_empty);        }
         else{
-            if(dbHandler.viewUser(nic) == null) {
+            if(userDBHandler.viewUser(nic) == null) {
 
                 User newUser = new User(nic, name, password, email);
-                dbHandler.addUser(newUser);
+                userDBHandler.addUser(newUser);
 
                 displayToast(R.string.successfully_registered);
                 Intent intent = new Intent(this, LoginActivity.class);

@@ -96,8 +96,7 @@ public class UserDBHandler extends SQLiteOpenHelper {
         return user;
     }
 
-
-    public boolean isUserExist(String email, String password) {
+    public String isUserExist(String email, String password) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -121,14 +120,21 @@ public class UserDBHandler extends SQLiteOpenHelper {
         );
 
 
-        int cursorCount = cursor.getCount();
+      if(cursor.moveToFirst()){
+          return cursor.getString(cursor.getColumnIndex(COLUMN_NIC));
+      }
+      return null;
+    }
 
-        cursor.close();
-        db.close();
-        if (cursorCount > 0) {
-            return true;
-        }
+    public void updateUser(String nic,String field,String value){
+        SQLiteDatabase db = getReadableDatabase();
 
-        return false;
+        ContentValues cv = new ContentValues();
+        cv.put(field,value);
+        db.update(TABLE_USERS, cv, COLUMN_NIC +" ="+nic, null);
+
+       /* String strSQL = "UPDATE " + TABLE_USERS +  " SET " + field + "="+ value +  " WHERE " +  COLUMN_NIC + "= '"+nic+"' ";
+        db.execSQL(strSQL);*/
+
     }
 }

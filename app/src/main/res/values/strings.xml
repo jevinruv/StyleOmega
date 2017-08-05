@@ -18,5 +18,6 @@
     <string name="error_invalid_credentials">Invalid Credentials</string>
     <string name="error_fields_empty">Empty Fields</string>
     <string name="successfully_registered">Successfully Registered</string>
+    <string name="successfully_updated">Successfully Updated</string>
     <string name="error_user_exists">User Exists !</string>
 </resources>
