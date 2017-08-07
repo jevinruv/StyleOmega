@@ -1,0 +1,118 @@
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
+    android:layout_weight="1"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:isScrollContainer="true"
+        android:padding="0dip"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imgBtnWomenClothes"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/women_clothes" />
+
+            <ImageButton
+                android:id="@+id/imgBtnWomenShoes"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="2"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/women_shoes" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imgBtnMensShoes"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/mens_shoes" />
+
+            <ImageButton
+                android:id="@+id/imgBtnMensClothes"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="2"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/mens_clothes" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="2"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/discount" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="2"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/kids_clothes"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="2"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/btn_login"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_column="2"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/btn_login"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+        </TableRow>
+
+
+    </TableLayout>
+</ScrollView>

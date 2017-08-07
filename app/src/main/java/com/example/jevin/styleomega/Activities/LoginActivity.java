@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             String nic = userDBHandler.isUserExist(email, password);
             if ( nic != null) {
                 session(nic);
-                Intent intent = new Intent(this, ManageAccountActivity.class);
+                Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.error_invalid_credentials), Toast.LENGTH_SHORT).show();

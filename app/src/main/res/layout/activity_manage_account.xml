@@ -41,7 +41,6 @@
         android:backgroundTint="@color/inputText"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/inputPassword"
         app:layout_constraintLeft_toLeftOf="@+id/inputPassword"
         app:layout_constraintRight_toRightOf="@+id/inputPassword"
@@ -145,31 +144,29 @@
         android:backgroundTint="@color/inputText"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/inputEmail"
         app:layout_constraintRight_toRightOf="@+id/inputEmail"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/inputEmail" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/inputNIC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:backgroundTint="@color/inputText"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/inputName"
+        app:layout_constraintLeft_toLeftOf="@+id/inputName"
         app:layout_constraintRight_toRightOf="@+id/inputName"
+        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintLeft_toLeftOf="@+id/inputName" />
+        tools:layout_constraintRight_creator="1" />
 
     <ImageButton
         android:id="@+id/btnName"
@@ -178,7 +175,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="18dp"
-        android:onClick="btnNameClicked"
         android:src="@drawable/name"
         app:layout_constraintBottom_toTopOf="@+id/btnEmail"
         app:layout_constraintLeft_toLeftOf="@+id/btnEmail"
@@ -191,15 +187,16 @@
         android:id="@+id/button3"
         android:layout_width="142dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/btnColor"
+        android:onClick="btnDoneClicked"
         android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
         tools:layout_constraintRight_creator="1" />
 
     <ImageView

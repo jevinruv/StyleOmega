@@ -11,21 +11,32 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Activities.LoginActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Activities.HomeActivity"
-            android:parentActivityName=".Activities.LoginActivity"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.RegisterActivity"
             android:label="Sign Up"
-            android:parentActivityName=".Activities.LoginActivity"></activity>
-        <activity android:name=".Activities.ManageAccountActivity"></activity>
+            android:parentActivityName=".Activities.LoginActivity" />
+        <activity
+            android:name=".Activities.ManageAccountActivity"
+            android:label="Manage Account"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Activities.HomeActivity"/>
+        <activity
+            android:name=".Activities.MainMenuActivity"
+            android:label="Main Menu"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Activities.HomeActivity">
+
+        </activity>
     </application>
 
 </manifest>

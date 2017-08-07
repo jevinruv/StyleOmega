@@ -1,6 +1,7 @@
 package com.example.jevin.styleomega.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,7 +22,7 @@ import com.example.jevin.styleomega.Database.UserDBHandler;
 import com.example.jevin.styleomega.Model.User;
 import com.example.jevin.styleomega.R;
 
-public class ManageAccountActivity extends AppCompatActivity {
+public class ManageAccountActivity extends AppCompatActivity implements View.OnClickListener {
     Switch switchEdit;
     EditText txtNic;
     EditText txtName;
@@ -47,6 +48,7 @@ public class ManageAccountActivity extends AppCompatActivity {
         prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         userNIC = prefs.getString("nic", null);
         initViews();
+        setTitle("Manage Account");
     }
 
     public void initViews(){
@@ -59,7 +61,12 @@ public class ManageAccountActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.inputPassword);
         btnPassword = (ImageButton) findViewById(R.id.btnPassword);
 
-        buttonEnable(false);
+
+        btnName.setOnClickListener(this);
+        btnEmail.setOnClickListener(this);
+
+
+        buttonEnable(false); //disable edit button at startup
         switchEditToggled();
 
         userDBHandler = new UserDBHandler(this);
@@ -103,20 +110,46 @@ public class ManageAccountActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    public void btnNameClicked(View view){
-        name = txtName.getText().toString();
 
-        if(name.equals("")){
+
+    public void btnDoneClicked(View view){
+
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        String option = null;
+        String value = null;
+
+        switch(v.getId()){
+            case R.id.btnName:
+                option = "name";
+                value = txtName.getText().toString();
+                break;
+            case R.id.btnEmail:
+                option = "email";
+                value = txtEmail.getText().toString();
+                break;
+            case R.id.btnPassword:
+                option = "password";
+                value = txtPassword.getText().toString();
+                break;
+            default:
+                break;
+        }
+
+        if(value.equals("")){
             displayToast(R.string.error_fields_empty);
         }
         else{
-            userDBHandler.updateUser(userNIC,"name",name);
+            userDBHandler.updateUser(userNIC,option,value);
             displayToast(R.string.successfully_updated);
             finish();
             startActivity(getIntent());
         }
 
     }
-
-
 }

@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.jevin.styleomega.Activities.HomeActivity">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnClicked"
+        android:text="Button"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="90dp" />
 </android.support.constraint.ConstraintLayout>

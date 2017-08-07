@@ -133,8 +133,5 @@ public class UserDBHandler extends SQLiteOpenHelper {
         cv.put(field,value);
         db.update(TABLE_USERS, cv, COLUMN_NIC +" ="+nic, null);
 
-       /* String strSQL = "UPDATE " + TABLE_USERS +  " SET " + field + "="+ value +  " WHERE " +  COLUMN_NIC + "= '"+nic+"' ";
-        db.execSQL(strSQL);*/
-
     }
 }
