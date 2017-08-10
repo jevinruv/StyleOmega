@@ -1,31 +1,26 @@
 package com.example.jevin.styleomega.Activities;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.widget.FrameLayout;
 
 import com.example.jevin.styleomega.R;
 
-public class HomeActivity extends AppCompatActivity {
+
+public class HomeActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_home, contentFrameLayout);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        navigationView.setCheckedItem(R.id.nav_women);
+
+
     }
 
-
-    public void btnClicked(View view){
-
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
-    }
 
 }

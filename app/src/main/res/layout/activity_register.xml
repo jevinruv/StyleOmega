@@ -109,35 +109,6 @@
         app:layout_constraintLeft_toLeftOf="@+id/inputEmail"
         app:layout_constraintHorizontal_bias="0.0" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="182dp"
-        android:layout_height="32dp"
-        android:orientation="horizontal"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
-        android:layout_marginTop="64dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="55dp"
-        app:layout_constraintLeft_toLeftOf="@+id/inputPassword"
-        app:layout_constraintTop_toTopOf="@+id/inputPassword"
-        android:layout_marginLeft="1dp"
-        android:layout_marginStart="1dp">
 
-        <RadioButton
-            android:id="@+id/radioBtnMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/male" />
-
-        <RadioButton
-            android:id="@+id/radioBtnFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/female" />
-    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

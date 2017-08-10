@@ -11,16 +11,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Activities.LoginActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Activities.LoginActivity">
+            android:parentActivityName=".Activities.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.HomeActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.RegisterActivity"
             android:label="Sign Up"
@@ -28,15 +26,21 @@
         <activity
             android:name=".Activities.ManageAccountActivity"
             android:label="Manage Account"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Activities.HomeActivity"/>
+            android:parentActivityName=".Activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.MainMenuActivity"
             android:label="Main Menu"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Activities.HomeActivity">
+            android:parentActivityName=".Activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
 
-        </activity>
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:label="About us"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

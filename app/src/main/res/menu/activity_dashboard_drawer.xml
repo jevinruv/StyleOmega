@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_women"
+            android:icon="@drawable/ic_apps_black_24dp"
+            android:title="Women" />
+        <item
+            android:id="@+id/nav_men"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_kids"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="About Us" />
+    </group>
+
+    <item android:title="Me">
+        <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_wishlist"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Wish list" />
+            <item
+                android:id="@+id/nav_manage_account"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Manage Account" />
+            </group>
+        </menu>
+    </item>
+</menu>
