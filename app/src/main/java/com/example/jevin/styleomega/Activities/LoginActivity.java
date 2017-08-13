@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.jevin.styleomega.Database.UserDBHandler;
+import com.example.jevin.styleomega.Database.DBHandler;
 import com.example.jevin.styleomega.Model.User;
 import com.example.jevin.styleomega.R;
 import com.idescout.sql.SqlScoutServer;
@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText _password;
     String email;
     String password;
-    UserDBHandler userDBHandler;
+    DBHandler dbHandler;
     SharedPreferences prefs;
 
     @Override
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void BtnSignInClicked(View view){
 
-        userDBHandler = new UserDBHandler(this);
+        dbHandler = new DBHandler(this);
         email = _email.getText().toString();
         password = _password.getText().toString();
 
@@ -54,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.error_fields_empty), Toast.LENGTH_SHORT).show();
         }
         else{
-            String nic = userDBHandler.isUserExist(email, password);
+            String nic = dbHandler.isUserExist(email, password);
             if ( nic != null) {
                 session(nic);
-                Intent intent = new Intent(this, HomeActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.error_invalid_credentials), Toast.LENGTH_SHORT).show();
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-        User user = userDBHandler.viewUser(nic);
+        User user = dbHandler.viewUser(nic);
         editor.putString("nic", user.getNic());
         editor.putString("email", user.getEmail());
         editor.commit();

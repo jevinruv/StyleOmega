@@ -15,16 +15,19 @@
 
     <string name="error_invalid_credentials">Invalid Credentials</string>
     <string name="error_fields_empty">Empty Fields</string>
+    <string name="error_invalid_details">Invalid Details !</string>
+    <string name="error_user_exists">User Exists !</string>
+
     <string name="successfully_registered">Successfully Registered</string>
     <string name="successfully_updated">Successfully Updated</string>
-    <string name="error_user_exists">User Exists !</string>
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
 
 
-
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_cart">Cart</string>
     <string name="title_notifications">Notifications</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_main">MainActivity</string>
+
 </resources>

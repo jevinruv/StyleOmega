@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.jevin.styleomega.Database.UserDBHandler;
+import com.example.jevin.styleomega.Database.DBHandler;
 import com.example.jevin.styleomega.Model.User;
 import com.example.jevin.styleomega.R;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -22,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     String email;
     String password;
 
-    UserDBHandler userDBHandler;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,44 +35,61 @@ public class RegisterActivity extends AppCompatActivity {
         initViews();
     }
 
-    public void initViews(){
+    public void initViews() {
         _nic = (EditText) findViewById(R.id.inputNIC);
         _name = (EditText) findViewById(R.id.inputName);
         _email = (EditText) findViewById(R.id.inputEmail);
         _password = (EditText) findViewById(R.id.inputPassword);
     }
 
-    public void BtnRegisterClicked(View view){
+    public void BtnRegisterClicked(View view) {
 
-        userDBHandler = new UserDBHandler(this);
+        dbHandler = new DBHandler(this);
 
-        nic = _nic.getText().toString();
-        name = _name.getText().toString();
-        email = _email.getText().toString();
-        password = _password.getText().toString();
+        nic = _nic.getText().toString().trim();
+        name = _name.getText().toString().trim();
+        email = _email.getText().toString().trim();
+        password = _password.getText().toString().trim();
 
-        if(nic.equals("") || name.equals("") || email.equals("") || password.equals("")){
-            displayToast(R.string.error_fields_empty);        }
-        else{
-            if(userDBHandler.viewUser(nic) == null) {
+        if (nic.equals("") || name.equals("") || email.equals("") || password.equals("")) {
+            displayToast(R.string.error_fields_empty);
+        } else {
+            if (isEmailValid(email) && isNicValid(nic)) {
 
-                User newUser = new User(nic, name, password, email);
-                userDBHandler.addUser(newUser);
+                if (dbHandler.viewUser(nic) == null &&  // checks for existing nic
+                        dbHandler.viewUserAny("email", email) == null) {    // checks for existing email
 
-                displayToast(R.string.successfully_registered);
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+                    User newUser = new User(nic, name, password, email);
+                    dbHandler.addUser(newUser);
+
+                    displayToast(R.string.successfully_registered);
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    displayToast(R.string.error_user_exists);
+                }
+
+            } else {
+                displayToast(R.string.error_invalid_details);
             }
-            else{
-                displayToast(R.string.error_user_exists);
-            }
-
         }
-
     }
 
 
-    public void displayToast(int message){
+    public boolean isEmailValid(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public boolean isNicValid(String nic) {
+        if (nic.length() == 10)
+            return true;
+        return false;
+    }
+
+    public void displayToast(int message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

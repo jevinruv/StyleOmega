@@ -38,17 +38,23 @@ public class BaseActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
 
+                    case R.id.nav_home:
+                        Intent main = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(main);
+                        drawerLayout.closeDrawers();
+                        break;
+
                     case R.id.nav_women:
-                        Intent dash = new Intent(getApplicationContext(), MainMenuActivity.class);
-                        startActivity(dash);
+                        Intent women = new Intent(getApplicationContext(), MainMenuActivity.class);
+                        startActivity(women);
 //                        finish();
                         drawerLayout.closeDrawers();
                         break;
 
 
                     case R.id.nav_manage_account:
-                        Intent anIntent = new Intent(getApplicationContext(), ManageAccountActivity.class);
-                        startActivity(anIntent);
+                        Intent manageAccount = new Intent(getApplicationContext(), ManageAccountActivity.class);
+                        startActivity(manageAccount);
 //                        finish();
                         drawerLayout.closeDrawers();
                         break;

@@ -3,30 +3,34 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_women"
-            android:icon="@drawable/ic_apps_black_24dp"
+            android:icon="@drawable/nav_woman"
             android:title="Women" />
         <item
             android:id="@+id/nav_men"
-            android:icon="@drawable/ic_info_outline_black_24dp"
-            android:title="About Us" />
+            android:icon="@drawable/nav_man"
+            android:title="Men" />
         <item
             android:id="@+id/nav_kids"
-            android:icon="@drawable/ic_info_outline_black_24dp"
-            android:title="About Us" />
+            android:icon="@drawable/nav_kids"
+            android:title="Kids" />
     </group>
 
     <item android:title="Me">
         <menu>
             <group android:checkableBehavior="single">
-            <item
-                android:id="@+id/nav_wishlist"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Wish list" />
-            <item
-                android:id="@+id/nav_manage_account"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Manage Account" />
+                <item
+                    android:id="@+id/nav_wishlist"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="Wish list" />
+                <item
+                    android:id="@+id/nav_manage_account"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="Manage Account" />
             </group>
         </menu>
     </item>

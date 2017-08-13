@@ -1,18 +1,10 @@
 package com.example.jevin.styleomega.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -20,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.jevin.styleomega.Database.UserDBHandler;
+import com.example.jevin.styleomega.Database.DBHandler;
 import com.example.jevin.styleomega.Model.User;
 import com.example.jevin.styleomega.R;
 
@@ -40,7 +32,7 @@ public class ManageAccountActivity extends BaseActivity implements View.OnClickL
     String email;
     String password;
 
-    UserDBHandler userDBHandler;
+    DBHandler dbHandler;
     SharedPreferences prefs;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +66,8 @@ public class ManageAccountActivity extends BaseActivity implements View.OnClickL
         buttonEnable(false); //disable edit button at startup
         switchEditToggled();
 
-        userDBHandler = new UserDBHandler(this);
-        User user = userDBHandler.viewUser(userNIC);
+        dbHandler = new DBHandler(this);
+        User user = dbHandler.viewUser(userNIC);
         txtNic.setText(user.getNic());
         txtName.setText(user.getName());
         txtEmail.setText(user.getEmail());
@@ -150,7 +142,7 @@ public class ManageAccountActivity extends BaseActivity implements View.OnClickL
             displayToast(R.string.error_fields_empty);
         }
         else{
-            userDBHandler.updateUser(userNIC,option,value);
+            dbHandler.updateUser(userNIC,option,value);
             displayToast(R.string.successfully_updated);
             finish();
             startActivity(getIntent());
