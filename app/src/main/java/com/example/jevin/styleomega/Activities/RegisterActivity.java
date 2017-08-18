@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.jevin.styleomega.Database.DBHandler;
 import com.example.jevin.styleomega.Model.User;
+import com.example.jevin.styleomega.Others.CommonMethods;
 import com.example.jevin.styleomega.R;
 
 import java.util.regex.Matcher;
@@ -52,9 +53,10 @@ public class RegisterActivity extends AppCompatActivity {
         password = _password.getText().toString().trim();
 
         if (nic.equals("") || name.equals("") || email.equals("") || password.equals("")) {
-            displayToast(R.string.error_fields_empty);
+            CommonMethods.displayToast(this,R.string.error_fields_empty);
         } else {
-            if (isEmailValid(email) && isNicValid(nic)) {
+            //if (isEmailValid(email) && isNicValid(nic)) {
+            if (CommonMethods.isEmailValid(email) && CommonMethods.isNicValid(nic)) {
 
                 if (dbHandler.viewUser(nic) == null &&  // checks for existing nic
                         dbHandler.viewUserAny("email", email) == null) {    // checks for existing email
@@ -62,21 +64,21 @@ public class RegisterActivity extends AppCompatActivity {
                     User newUser = new User(nic, name, password, email);
                     dbHandler.addUser(newUser);
 
-                    displayToast(R.string.successfully_registered);
+                    CommonMethods.displayToast(this,R.string.successfully_registered);
                     Intent intent = new Intent(this, LoginActivity.class);
                     startActivity(intent);
                 } else {
-                    displayToast(R.string.error_user_exists);
+                    CommonMethods.displayToast(this,R.string.error_user_exists);
                 }
 
             } else {
-                displayToast(R.string.error_invalid_details);
+                CommonMethods.displayToast(this,R.string.error_invalid_details);
             }
         }
     }
 
 
-    public boolean isEmailValid(String email) {
+   /* public boolean isEmailValid(String email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
@@ -91,5 +93,5 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void displayToast(int message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }

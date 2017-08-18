@@ -33,6 +33,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String ITEM_COLUMN_ID = "id";
     private static final String ITEM_COLUMN_NAME = "name";
     private static final String ITEM_COLUMN_PRICE = "price";
+    private static final String ITEM_COLUMN_IMAGE = "image";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -50,6 +51,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "(" +
                 ITEM_COLUMN_ID + " TEXT PRIMARY KEY," +
                 ITEM_COLUMN_NAME + " TEXT," +
+                ITEM_COLUMN_IMAGE + " TEXT," +
                 ITEM_COLUMN_PRICE + " TEXT" + ")";
 
 
@@ -188,6 +190,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 item.setId(c.getString(c.getColumnIndex(ITEM_COLUMN_ID)));
                 item.setName(c.getString(c.getColumnIndex(ITEM_COLUMN_NAME)));
                 item.setPrice(c.getDouble(c.getColumnIndex(ITEM_COLUMN_PRICE)));
+                item.setImage(c.getString(c.getColumnIndex(ITEM_COLUMN_IMAGE)));
             }
         } catch (SQLException er) {
 

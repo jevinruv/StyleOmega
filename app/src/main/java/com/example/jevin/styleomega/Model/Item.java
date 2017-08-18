@@ -8,6 +8,7 @@ public class Item {
     private String id;
     private String name;
     private double price;
+    private String image;
 
     public String getId() {
         return id;
@@ -31,5 +32,13 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

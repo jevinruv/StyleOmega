@@ -1,6 +1,7 @@
 package com.example.jevin.styleomega.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.os.Bundle;
@@ -14,17 +15,18 @@ import android.widget.Toast;
 
 import com.example.jevin.styleomega.Database.DBHandler;
 import com.example.jevin.styleomega.Model.User;
+import com.example.jevin.styleomega.Others.CommonMethods;
 import com.example.jevin.styleomega.R;
 
 public class ManageAccountActivity extends BaseActivity implements View.OnClickListener {
     Switch switchEdit;
     EditText txtNic;
     EditText txtName;
-    ImageButton  btnName;
+    ImageButton btnName;
     EditText txtEmail;
-    ImageButton  btnEmail;
+    ImageButton btnEmail;
     EditText txtPassword;
-    ImageButton  btnPassword;
+    ImageButton btnPassword;
 
     String userNIC;
     String nic;
@@ -48,8 +50,8 @@ public class ManageAccountActivity extends BaseActivity implements View.OnClickL
         setTitle("Manage Account");
     }
 
-    public void initViews(){
-        switchEdit = (Switch)  findViewById(R.id.switchEdit);
+    public void initViews() {
+        switchEdit = (Switch) findViewById(R.id.switchEdit);
         txtNic = (EditText) findViewById(R.id.inputNIC);
         txtName = (EditText) findViewById(R.id.inputName);
         btnName = (ImageButton) findViewById(R.id.btnName);
@@ -75,24 +77,23 @@ public class ManageAccountActivity extends BaseActivity implements View.OnClickL
 
     }
 
-    public void switchEditToggled(){
+    public void switchEditToggled() {
 
         switchEdit.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     buttonEnable(true);
                     txtNic.setEnabled(false);
-                }
-                else{
+                } else {
                     buttonEnable(false);
                 }
             }
         });
     }
 
-    public void buttonEnable(boolean flag){
+    public void buttonEnable(boolean flag) {
         txtNic.setEnabled(flag);
         txtName.setEnabled(flag);
         btnName.setEnabled(flag);
@@ -103,16 +104,15 @@ public class ManageAccountActivity extends BaseActivity implements View.OnClickL
 
     }
 
-    public void displayToast(int message){
+   /* public void displayToast(int message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
 
+    public void btnDoneClicked(View view) {
 
-    public void btnDoneClicked(View view){
-
-       /* Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
     }
 
 
@@ -121,31 +121,34 @@ public class ManageAccountActivity extends BaseActivity implements View.OnClickL
         String option = null;
         String value = null;
 
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.btnName:
                 option = "name";
-                value = txtName.getText().toString();
+                value = txtName.getText().toString().trim();
                 break;
             case R.id.btnEmail:
                 option = "email";
-                value = txtEmail.getText().toString();
+                value = txtEmail.getText().toString().trim();
                 break;
             case R.id.btnPassword:
                 option = "password";
-                value = txtPassword.getText().toString();
+                value = txtPassword.getText().toString().trim();
                 break;
             default:
                 break;
         }
 
-        if(value.equals("")){
-            displayToast(R.string.error_fields_empty);
+        if (value.equals("")) {
+            commonMethods.displayToast(this, R.string.error_fields_empty);
         }
-        else{
-            dbHandler.updateUser(userNIC,option,value);
-            displayToast(R.string.successfully_updated);
+        else if (option.equals("email") && commonMethods.isEmailValid(value) == false) {
+            CommonMethods.displayToast(this, R.string.error_invalid_details);
+        }
+        else {
+            dbHandler.updateUser(userNIC, option, value);
+            CommonMethods.displayToast(this, R.string.successfully_updated);
             finish();
-            startActivity(getIntent());
+            startActivity(getIntent()); //refresh activity for changes
         }
 
     }

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.example.jevin.styleomega.Others.CommonMethods;
 import com.example.jevin.styleomega.R;
 
 public class BaseActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class BaseActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
+    CommonMethods commonMethods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
