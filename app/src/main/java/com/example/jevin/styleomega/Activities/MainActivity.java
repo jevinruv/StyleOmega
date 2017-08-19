@@ -67,6 +67,7 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = String.valueOf(parent.getItemAtPosition(position));
                 Toast.makeText(getApplicationContext(),item,Toast.LENGTH_SHORT).show();
+
             }
         });
 
