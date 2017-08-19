@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.jevin.styleomega.R;
 
 public class MainActivity extends BaseActivity {
-
+/**/
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
