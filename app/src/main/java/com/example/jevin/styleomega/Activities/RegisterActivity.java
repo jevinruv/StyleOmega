@@ -12,8 +12,6 @@ import com.example.jevin.styleomega.Model.User;
 import com.example.jevin.styleomega.Others.CommonMethods;
 import com.example.jevin.styleomega.R;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -53,9 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
         password = _password.getText().toString().trim();
 
         if (nic.equals("") || name.equals("") || email.equals("") || password.equals("")) {
-            CommonMethods.displayToast(this,R.string.error_fields_empty);
+            CommonMethods.displaySnackbar(view, R.string.error_fields_empty);
         } else {
-            //if (isEmailValid(email) && isNicValid(nic)) {
             if (CommonMethods.isEmailValid(email) && CommonMethods.isNicValid(nic)) {
 
                 if (dbHandler.viewUser(nic) == null &&  // checks for existing nic
@@ -64,34 +61,17 @@ public class RegisterActivity extends AppCompatActivity {
                     User newUser = new User(nic, name, password, email);
                     dbHandler.addUser(newUser);
 
-                    CommonMethods.displayToast(this,R.string.successfully_registered);
+                    CommonMethods.displaySnackbar(view, R.string.successfully_registered);
                     Intent intent = new Intent(this, LoginActivity.class);
                     startActivity(intent);
                 } else {
-                    CommonMethods.displayToast(this,R.string.error_user_exists);
+                    CommonMethods.displaySnackbar(view, R.string.error_user_exists);
                 }
 
             } else {
-                CommonMethods.displayToast(this,R.string.error_invalid_details);
+                CommonMethods.displaySnackbar(view, R.string.error_invalid_details);
             }
         }
     }
 
-
-   /* public boolean isEmailValid(String email) {
-        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-    public boolean isNicValid(String nic) {
-        if (nic.length() == 10)
-            return true;
-        return false;
-    }
-
-    public void displayToast(int message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }*/
 }

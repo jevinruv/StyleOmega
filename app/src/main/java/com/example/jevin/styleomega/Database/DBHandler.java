@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.jevin.styleomega.Model.Item;
 import com.example.jevin.styleomega.Model.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Jevin on 8/12/2017.
  */
@@ -197,6 +200,52 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
         return item;
+    }
+
+    public List<Item> getAllItems() {
+        // array of columns to fetch
+        String[] columns = {
+                ITEM_COLUMN_ID,
+                ITEM_COLUMN_NAME,
+                ITEM_COLUMN_PRICE
+        };
+        // sorting orders
+        String sortOrder =
+                ITEM_COLUMN_NAME + " ASC";
+        List<Item> itemList = new ArrayList<Item>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // query the user table
+        /**
+         * Here query function is used to fetch records from user table this function works like we use sql query.
+         * SQL query equivalent to this query function is
+         * SELECT user_id,user_name,user_email,user_password FROM user ORDER BY user_name;
+         */
+        Cursor cursor = db.query(TABLE_ITEMS, //Table to query
+                columns,    //columns to return
+                null,        //columns for the WHERE clause
+                null,        //The values for the WHERE clause
+                null,       //group the rows
+                null,       //filter by row groups
+                sortOrder); //The sort order
+
+
+        // Traversing through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Item item = new Item();
+                item.setId(cursor.getString(cursor.getColumnIndex(ITEM_COLUMN_ID)));
+                item.setName(cursor.getString(cursor.getColumnIndex(ITEM_COLUMN_NAME)));
+                item.setPrice(cursor.getDouble(cursor.getColumnIndex(ITEM_COLUMN_PRICE)));
+                // Adding user record to list
+                itemList.add(item);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return itemList;
     }
 }
 

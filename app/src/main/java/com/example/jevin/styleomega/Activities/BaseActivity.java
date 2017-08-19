@@ -53,6 +53,13 @@ public class BaseActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
 
+                    case R.id.nav_men:
+                        Intent men = new Intent(getApplicationContext(), ItemsListActivity.class);
+                        startActivity(men);
+//                        finish();
+                        drawerLayout.closeDrawers();
+                        break;
+
 
                     case R.id.nav_manage_account:
                         Intent manageAccount = new Intent(getApplicationContext(), ManageAccountActivity.class);
