@@ -14,14 +14,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.jevin.styleomega.Database.DBHandler;
 import com.example.jevin.styleomega.Model.Item;
