@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.jevin.styleomega.Activities.ItemsListActivity">
+    tools:context="com.example.jevin.styleomega.Activities.ItemsListActivity"
+    android:weightSum="1">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
-        android:layout_height="466dp" />
+        android:layout_height="466dp"
+        android:layout_weight="0.97" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

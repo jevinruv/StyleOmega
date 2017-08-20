@@ -179,6 +179,23 @@ public class DBHandler extends SQLiteOpenHelper {
 
     //********************* Items Table******************************************/
 
+    public void addItem(Item item) {
+
+        ContentValues values = new ContentValues();
+
+        values.put(ITEM_COLUMN_ID, item.getId());
+        values.put(ITEM_COLUMN_NAME, item.getName());
+        values.put(ITEM_COLUMN_PRICE, item.getPrice());
+
+        SQLiteDatabase db = getWritableDatabase();
+        try {
+            db.insert(TABLE_ITEMS, null, values);
+        } catch (Exception er) {
+
+        }
+        db.close();
+    }
+
     public Item viewItem(String id) {
 
         SQLiteDatabase db = getReadableDatabase();
